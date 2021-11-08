@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  todo-list-umi-dev:
+    build:
+      context: todo-list-umi
+      dockerfile: docker/Dockerfile.dev
+    image: todo-list-umi:dev
+    container_name: todo-list-umi-dev
+    stdin_open: true
+    tty: true
+    environment:
+      BRANCH: ${BRANCH:-master}
+    networks:
+      - backend
+    ports:
+      - 8001:80
+    volumes:
+      - ~/.ssh:/root/.ssh
+
+  todo-list-go-dev:
+    build:
+      context: todo-list-go
+      dockerfile: docker/Dockerfile.dev
+    image: todo-list-go:dev
+    container_name: todo-list-go-dev
+    stdin_open: true
+    tty: true
+    environment:
+      BRANCH: ${BRANCH:-master}
+      ADDR: ${ADDR:-:80}
+      DBINIT: ${DBINIT:-false}
+      MONGO: ${MONGO:-mongodb://mongo:27017}
+      DB: ${DB:-todo-list}
+      UC: ${UC:-http://user-center}
+    volumes:
+      - ~/.ssh:/root/.ssh
+    networks:
+      - backend
+    depends_on:
+      - mongo
+
+networks:
+  backend:
+    name: backend
+    driver: bridge

@@ -1,0 +1,6 @@
+[submodule "time-mgt-umi"]
+	path = time-mgt-umi
+	url = git@github.com:NgeKaworu/time-mgt-umi.git
+[submodule "time-mgt-go"]
+	path = time-mgt-go
+	url = git@github.com:NgeKaworu/time-mgt-go.git
