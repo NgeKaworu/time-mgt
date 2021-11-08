@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-docker compose -f ./docker-compose.dev.yml --env-file ~/.env -p todo-list-dev up -d;
+docker compose -f ./docker-compose.dev.yml --env-file ~/.env -p time-mgt-dev up -d;

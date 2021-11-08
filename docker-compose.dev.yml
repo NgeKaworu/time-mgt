@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  todo-list-umi-dev:
+  time-mgt-umi-dev:
     build:
-      context: todo-list-umi
+      context: time-mgt-umi
       dockerfile: docker/Dockerfile.dev
-    image: todo-list-umi:dev
-    container_name: todo-list-umi-dev
+    image: time-mgt-umi:dev
+    container_name: time-mgt-umi-dev
     stdin_open: true
     tty: true
     environment:
@@ -18,12 +18,12 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh
 
-  todo-list-go-dev:
+  time-mgt-go-dev:
     build:
-      context: todo-list-go
+      context: time-mgt-go
       dockerfile: docker/Dockerfile.dev
-    image: todo-list-go:dev
-    container_name: todo-list-go-dev
+    image: time-mgt-go:dev
+    container_name: time-mgt-go-dev
     stdin_open: true
     tty: true
     environment:
@@ -31,7 +31,7 @@ services:
       ADDR: ${ADDR:-:80}
       DBINIT: ${DBINIT:-false}
       MONGO: ${MONGO:-mongodb://mongo:27017}
-      DB: ${DB:-todo-list}
+      DB: ${DB:-time-mgt}
       UC: ${UC:-http://user-center}
     volumes:
       - ~/.ssh:/root/.ssh

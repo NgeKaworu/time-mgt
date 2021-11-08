@@ -1,28 +1,28 @@
 version: "3.9"
 
 services:
-  todo-list-umi:
+  time-mgt-umi:
     restart: "always"
     build:
-      context: ./todo-list-umi
+      context: ./time-mgt-umi
       dockerfile: docker/Dockerfile
-    image: ngekaworu/todo-list-umi
-    container_name: todo-list-umi
+    image: ngekaworu/time-mgt-umi
+    container_name: time-mgt-umi
     networks:
       - frontend
 
-  todo-list-go:
+  time-mgt-go:
     restart: "always"
     build:
-      context: ./todo-list-go
+      context: ./time-mgt-go
       dockerfile: docker/Dockerfile
-    image: ngekaworu/todo-list-go
-    container_name: todo-list-go
+    image: ngekaworu/time-mgt-go
+    container_name: time-mgt-go
     environment:
       ADDR: ${ADDR:-:80}
       DBINIT: ${DBINIT:-false}
       MONGO: ${MONGO:?mongo url is required}
-      DB: ${DB:-todo-list}
+      DB: ${DB:-time-mgt}
       UC: ${UC:-http://user-center}
     networks:
       - backend
