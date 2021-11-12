@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   time-mgt-umi:
-    
+    restart: "always"
     build:
       context: ./time-mgt-umi
       dockerfile: docker/Dockerfile
@@ -12,7 +12,7 @@ services:
       - frontend
 
   time-mgt-go:
-    
+    restart: "always"
     build:
       context: ./time-mgt-go
       dockerfile: docker/Dockerfile
