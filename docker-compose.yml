@@ -22,6 +22,7 @@ services:
       ADDR: ${ADDR:-:80}
       DBINIT: ${DBINIT:-false}
       MONGO: ${MONGO:?mongo url is required}
+      REDIS: ${REDIS:?redis url is required}
       DB: ${DB:-time-mgt}
       UC: ${UC:-http://user-center}
     networks:
